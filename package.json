@@ -8,10 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "gsap": "^3.10.4",
     "vue": "^3.2.25"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
+    "postcss-for": "^2.1.1",
     "postcss-nested": "^5.0.6",
     "pug": "^3.0.2",
     "vite": "^2.9.9",
