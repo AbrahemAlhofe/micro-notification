@@ -1,6 +1,6 @@
 <template lang="pug">
     
-.micro-stack: slot
+.micro-stack( :class="`micro-stack--stage-${head}`" ): slot
 
 </template>
 <script>
@@ -20,7 +20,9 @@ export default {
 
         async nextStage () {
 
-            await this.stages[this.head].$attrs.onLeave();
+            const onLeave = this.stages[this.head].$attrs.onLeave;
+
+            if ( onLeave ) await onLeave();
 
             this.head += 1;
 

@@ -5,10 +5,11 @@ micro-stack.micro-notification( ref="microStack" )
         .badge( ref="badge" ): span 5
         .bell( ref="bell" ): BellIcon
 
-    micro-stage.micro-notification__notifications-stack( @enter="enterStageTwo" )
-        .notification( ref="notification" )
+    micro-stage.micro-notification__notifications-stack( @enter="enterStageTwo" @leave="leaveStageTwo" )
+        .notification( ref="notification" @click="$refs.microStack.nextStage()" )
             .author
-                .author__avatar( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-1.jpg)` }' )
+                keep-alive
+                    .author__avatar( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-4.jpg)` }' )
                 div
                     .author__name Robert Merphy
                     .notification__details informed 2 students 5/30/2022, 2:23:24 PM
@@ -24,6 +25,35 @@ micro-stack.micro-notification( ref="microStack" )
                         div( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-2.jpg)` }')
                     .student
                         div( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-3.jpg)` }')
+
+    micro-stage.message( @enter="enterStageThree" )
+        .message__header
+            .author
+                keep-alive
+                    .author__avatar( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-4.jpg)` }' )
+                div
+                    .author__name Robert Merphy
+                    .notification__details informed 2 students 5/30/2022, 2:23:24 PM
+        .message__content( ref="content" )
+            p.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Dolorum voluptates minima expedita voluptatibus!
+                Deserunt laudantium accusantium quisquam nobis placeat
+            .asset( :class='[ `asset--doc-type` ]' )
+                .asset__icon: DocIcon
+                .asset__details
+                    .asset__name New Document File.doc
+                    .asset__size 1.23MB
+        .message__footer
+            .readed
+                span Readed
+                .student( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-1.jpg)` }' )
+                .student( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-2.jpg)` }' )
+
+            .unread
+                span Unread
+                .student( :style='{ backgroundImage : `url(/src/assets/avatars/avatar-3.jpg)` }' )
+
 </template>
 
 <script>
@@ -33,6 +63,7 @@ import MicroStage from './micro-stage.vue';
 import MicroStack from './micro-stack.vue';
 
 import BellIcon from '../assets/bell.svg';
+import DocIcon from '../assets/doc.svg';
 
 export default {
 
@@ -62,11 +93,41 @@ export default {
 
             })
 
+        },
+
+        leaveStageTwo () {
+
+            return new Promise(onComplete => {
+
+                const containerHeight = 345
+                const notificationHeight = this.$refs.notification.getBoundingClientRect().height;
+                const containerPadding = 10;
+                const distance = ( (containerHeight / 2) - notificationHeight ) + containerPadding;
+
+                gsap.timeline({ onComplete })
+                    .to(this.$el, { height: containerHeight + "px" })
+                    .to(this.$refs.notification, { y: `-=${distance}px` })
+                    .to(this.$refs.progress, { opacity: 0 }, "-=0.9")
+                    .duration(0.5);
+
+            })
+
+        },
+
+        enterStageThree () {
+
+            return new Promise(onComplete => {
+
+                gsap.timeline({ onComplete })
+                    .from(this.$refs.content, { opacity: 0, y: 20 })
+
+            })
+
         }
 
     },
     
-    components: { BellIcon, MicroStage, MicroStack } 
+    components: { BellIcon, DocIcon, MicroStage, MicroStack } 
 
 }
 </script>
@@ -149,6 +210,12 @@ export default {
     display: block;
 
 }
+
+/*
+==============================================
+| Stage 2
+==============================================
+*/
 
 .notification {
 
@@ -278,6 +345,112 @@ export default {
             width: 100%;
             height: 100%;
             border-radius: 50%;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+
+}
+
+/*
+==============================================
+| Stage 3
+==============================================
+*/
+
+.message__header {
+
+    display: flex;
+    justify-content: space-between;
+    transform-origin: left;
+    cursor : pointer;
+    align-items: center;
+
+    &__details {
+        color: var(--gray-45);
+    }
+
+}
+
+.message__header .author {
+    display: flex;
+    &__name {
+        color: var(--black);
+    }
+    &__avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background-color: var(--gray-94);
+        background-position: center;
+        background-size: contain;
+    }
+}
+
+.message__content {
+
+    .asset {
+        display: flex;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+
+        &__icon {
+            margin-right: 10px;
+        }
+
+        &__name {
+            color: var(--black-100)
+        }
+
+        &__details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        &__size {
+            font-size: 13px;
+            color: var(--gray-300)
+        }   
+    }
+
+    .asset--doc-type, .asset--ts-type {
+        background-color: rgb(33, 150, 243, 7%);
+    }
+
+    .asset--html-type {
+        background-color: rgba(253, 112, 19, 7%);
+    }
+
+    .asset-unkownfile-type {
+        background-color: rgba(238, 238, 238, 40%)
+    }
+
+}
+
+.message__footer {
+
+    margin: 10px;
+    justify-content: center;
+    padding-top: 10px;
+    display: flex;
+
+    .readed, .unread {
+        padding : 0 2em;
+        span {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--gray-45);
+        } 
+        .student {
+            width : 25px;
+            height : 25px;
+            margin-right : 7px;
+            border-radius: 50%;
+            float : left;
+            background-color: var(--gray-94);
             background-size: contain;
             background-position: center;
         }
