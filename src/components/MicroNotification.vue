@@ -9,7 +9,7 @@ micro-stack.micro-notification( ref="microStack" )
         .notification( ref="notification" @click="$refs.microStack.nextStage()" )
             .author
                 keep-alive
-                    .author__avatar( :style='{ backgroundImage : `url(/assets/avatars/avatar-4.jpg)` }' )
+                    .author__avatar( :style='{ backgroundImage : `url(assets/avatars/avatar-4.jpg)` }' )
                 div
                     .author__name Robert Merphy
                     .notification__details informed 2 students 5/30/2022, 2:23:24 PM
@@ -22,15 +22,15 @@ micro-stack.micro-notification( ref="microStack" )
                         circle( r='50%' cx='50%' cy='50%' :stroke-dasharray=' `94.24777960769379 94.24777960769379` ' ).bar__progress
                 .students-container
                     .student
-                        div( :style='{ backgroundImage : `url(/assets/avatars/avatar-2.jpg)` }')
+                        div( :style='{ backgroundImage : `url(assets/avatars/avatar-2.jpg)` }')
                     .student
-                        div( :style='{ backgroundImage : `url(/assets/avatars/avatar-3.jpg)` }')
+                        div( :style='{ backgroundImage : `url(assets/avatars/avatar-3.jpg)` }')
 
     micro-stage.message( @enter="enterStageThree" )
         .message__header
             .author
                 keep-alive
-                    .author__avatar( :style='{ backgroundImage : `url(/assets/avatars/avatar-4.jpg)` }' )
+                    .author__avatar( :style='{ backgroundImage : `url(assets/avatars/avatar-4.jpg)` }' )
                 div
                     .author__name Robert Merphy
                     .notification__details informed 2 students 5/30/2022, 2:23:24 PM
@@ -49,12 +49,12 @@ micro-stack.micro-notification( ref="microStack" )
         .message__footer
             .readed
                 span Readed
-                .student( :style='{ backgroundImage : `url(/assets/avatars/avatar-1.jpg)` }' )
-                .student( :style='{ backgroundImage : `url(/assets/avatars/avatar-2.jpg)` }' )
+                .student( :style='{ backgroundImage : `url(assets/avatars/avatar-1.jpg)` }' )
+                .student( :style='{ backgroundImage : `url(assets/avatars/avatar-2.jpg)` }' )
 
             .unread
                 span Unread
-                .student( :style='{ backgroundImage : `url(/assets/avatars/avatar-3.jpg)` }' )
+                .student( :style='{ backgroundImage : `url(assets/avatars/avatar-3.jpg)` }' )
 
 </template>
 
