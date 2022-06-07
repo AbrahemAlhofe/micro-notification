@@ -34,6 +34,8 @@ micro-stack.micro-notification( ref="microStack" )
                 div
                     .author__name Robert Merphy
                     .notification__details informed 2 students 5/30/2022, 2:23:24 PM
+            .micro-notification__close-button( @click="close" ): CloseIcon
+    
         .message__content( ref="content" )
             p.
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -64,6 +66,7 @@ import MicroStack from './micro-stack.vue';
 
 import BellIcon from '../assets/bell.svg';
 import DocIcon from '../assets/doc.svg';
+import CloseIcon from '../assets/icons/close.svg';
 
 export default {
 
@@ -123,11 +126,24 @@ export default {
 
             })
 
+        },
+
+        close () {
+
+            gsap.timeline()
+                .to(this.$el, { height: 75, width: 75, justifyContent: "center" })
+                .to(this.$refs.bell, { scale: 1 })
+                .to(this.$refs.badge, { scale: 1 })
+                .to(this.$refs.notification, { display: "none", y: 0, scale: 0.7 })
+                
+
+            this.$refs.microStack.head = 0;
+
         }
 
     },
     
-    components: { BellIcon, DocIcon, MicroStage, MicroStack } 
+    components: { CloseIcon, BellIcon, DocIcon, MicroStage, MicroStack } 
 
 }
 </script>
@@ -176,6 +192,7 @@ export default {
     right: 15px;
     background-color: var(--red-50);
     color: var(--white);
+    z-index: 5;
 
     span {
         z-index: 2;
@@ -357,6 +374,33 @@ export default {
 | Stage 3
 ==============================================
 */
+
+.micro-notification {
+
+    &__close-button {
+
+        transition: all .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(1);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        color: var(--gray-45);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--gray-94);
+        }
+
+    }
+
+}
 
 .message__header {
 
