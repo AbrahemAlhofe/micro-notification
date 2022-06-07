@@ -64,9 +64,9 @@ import { gsap } from 'gsap';
 import MicroStage from './micro-stage.vue';
 import MicroStack from './micro-stack.vue';
 
-import BellIcon from '../assets/icons/bell.svg';
-import DocIcon from '../assets/icons/doc.svg';
-import CloseIcon from '../assets/icons/close.svg';
+import BellIcon from '../../assets/icons/bell.svg';
+import DocIcon from '../../assets/icons/doc.svg';
+import CloseIcon from '../../assets/icons/close.svg';
 
 export default {
 
