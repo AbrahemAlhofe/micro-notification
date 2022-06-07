@@ -1,0 +1,6 @@
+<svg width="40" height="40" viewBox="0 0 77 77">
+    <rect width="77" height="77" rx="8" fill='#2196F3' />
+    <text transform="translate(53 42)" fill="#fff" font-size="32" font-family="Cairo-SemiBold, Cairo" font-weight="600"><tspan x="-28.8" y="0">W</tspan></text>
+    <line x2="33" transform="translate(22.5 54.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+    <line x2="33" transform="translate(22.5 63.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+</svg>
