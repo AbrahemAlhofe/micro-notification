@@ -161,13 +161,6 @@ export default {
     height: 75px;
     position: relative;
     background-color: var(--white);
-    cursor: pointer;
-
-    &:active {
-        --squish-amount : 9.5px;
-        margin-top: var(--squish-amount);
-        height: calc( var(--squish-amount) + 75px );
-    }
 
     &__notifications-stack {
 
@@ -177,7 +170,18 @@ export default {
 
     &.micro-stack--stage-0 {
     
+        cursor: pointer;
         padding: 0;
+
+    }
+
+    &.micro-stack--stage-0, &.micro-stack--stage-1 {
+        
+        &:active {
+            --squish-amount : 9.5px;
+            margin-top: var(--squish-amount);
+            height: calc( var(--squish-amount) + 75px );
+        }
 
     }
 
