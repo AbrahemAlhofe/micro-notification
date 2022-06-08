@@ -88,8 +88,10 @@ export default {
 
             return new Promise(onComplete => {
 
+                const isLargeScreen = window.matchMedia("(min-width: 768px)").matches;
+
                 gsap.timeline()
-                    .to(this.$el, { width: 500, justifyContent: "space-between", onComplete })
+                    .to(this.$el, { width: isLargeScreen ? 500 : "95vw", justifyContent: "space-between", onComplete })
                     .set(this.$refs.notification, { display: "flex" })
                     .to(this.$refs.notification, { scale: 1 })
                     .to(this.$refs.progress, { opacity: 1 });
@@ -276,6 +278,7 @@ export default {
 
 .notification .author {
     display: flex;
+    align-items: center;
     &__name {
         color: var(--black);
     }
@@ -286,7 +289,8 @@ export default {
         margin-right: 10px;
         background-color: var(--gray-94);
         background-position: center;
-        background-size: contain;
+        background-size: cover;
+        aspect-ratio: 1 / 1;
     }
 }
 
@@ -408,16 +412,19 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        transform: scale(1);
-        position: absolute;
-        top: 10px;
-        right: 10px;
         border-radius: 50%;
         width: 40px;
         height: 40px;
-        padding: 8px;
         color: var(--gray-45);
         cursor: pointer;
+
+        svg {
+
+            position: absolute;
+            top: 15px;
+            right: 15px;
+
+        }
 
         &:hover {
             background-color: var(--gray-94);
