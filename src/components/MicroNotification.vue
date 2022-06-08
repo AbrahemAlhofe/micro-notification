@@ -175,6 +175,27 @@ export default {
 
     }
 
+    &.micro-stack--stage-0 {
+    
+        padding: 0;
+
+    }
+
+}
+
+/* ======================================== */
+/* Stage 1
+/* ======================================== */
+
+.micro-stack__stage:nth-child(1) {
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .badge {
