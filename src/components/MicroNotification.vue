@@ -2,7 +2,7 @@
 micro-stack.micro-notification( ref="microStack" )
     
     micro-stage( @leave="leaveStageOne" @click="$refs.microStack.nextStage()" ) 
-        .badge( ref="badge" ): span 5
+        .badge( ref="badge" ): span 1
         .bell( ref="bell" ): BellIcon
 
     micro-stage.micro-notification__notifications-stack( @enter="enterStageTwo" @leave="leaveStageTwo" )
