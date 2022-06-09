@@ -372,10 +372,13 @@ export default {
     }
 
     .student {
+        --radius: 21px;
+        min-width: var(--radius);
+        min-height: var(--radius);
+        width: var(--radius);
+        height: var(--radius);
         transition: all .5s cubic-bezier(0.165, 0.84, 0.44, 1);
-        width: 35%;
         background-color: var(--black);
-        height: 35%;
         border-radius: 50%;
         position: absolute;
         z-index: 5;
@@ -389,6 +392,8 @@ export default {
             }
         }
         div {
+            min-width: 100%;
+            min-height: 100%;
             width: 100%;
             height: 100%;
             border-radius: 50%;
