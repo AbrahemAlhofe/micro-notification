@@ -13,7 +13,7 @@ micro-stack.micro-notification( ref="microStack" )
                 div
                     .author__name Robert Merphy
                     .notification__details informed 2 students 5/30/2022, 2:23:24 PM
-            .progress( ref="progress" )
+            .progress( ref="progress" @click.stop )
                 span
                     span 2
                     span Readed
