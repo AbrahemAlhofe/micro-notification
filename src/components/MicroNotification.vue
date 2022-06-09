@@ -263,6 +263,7 @@ export default {
 
 .notification {
 
+    gap: 0.5rem;
     justify-content: space-between;
     transform-origin: left;
     cursor : pointer;
