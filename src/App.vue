@@ -42,6 +42,7 @@ body {
     height : 100%;
     margin: 0px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
 }
 
 </style>
