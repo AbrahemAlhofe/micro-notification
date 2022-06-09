@@ -423,17 +423,13 @@ export default {
         height: 40px;
         color: var(--gray-45);
         cursor: pointer;
-
-        svg {
-
-            position: absolute;
-            top: 15px;
-            right: 15px;
-
-        }
+        position: relative;
+        top: -25px;
 
         &:hover {
+
             background-color: var(--gray-94);
+
         }
 
     }
