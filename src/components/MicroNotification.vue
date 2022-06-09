@@ -462,6 +462,8 @@ export default {
     &__avatar {
         width: 50px;
         height: 50px;
+        min-width: 50px;
+        min-height: 50px;
         border-radius: 50%;
         margin-right: 10px;
         background-color: var(--gray-94);
